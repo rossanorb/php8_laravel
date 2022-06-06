@@ -1,5 +1,9 @@
 <?php
 
+use App\Solid\AreaCalculator;
+use App\Solid\Circle;
+use App\Solid\Rectangle;
+use App\Solid\Triangle;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return (new AreaCalculator())->totalArea([
+        new Rectangle(10, 20),
+        new Rectangle(10, 20),
+        new Circle(10),
+        new Triangle(20, 30),
+    ]);
 });
