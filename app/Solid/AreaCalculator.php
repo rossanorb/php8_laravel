@@ -7,17 +7,12 @@ use Exception;
 class AreaCalculator
 {
 
-    public function totalArea(array $shapes)
+    public function totalArea(ShapeInterface ...$shapes)
     {
-
         $area = 0;
         foreach ($shapes as $shape) {
-            if ($shape instanceof ShapeInterface) {
-                $area = $shape->area();
-            } else {
-                throw new Exception(get_class($shape) . 'Should be implement App\Solid\ShapeInterface');
-            }
-        }
+            $area += $shape->area();
+        };
 
         return $area;
     }
